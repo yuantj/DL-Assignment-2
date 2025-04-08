@@ -1,0 +1,9 @@
+*
+!.gitignore
+!*.ipynb
+!report
+!report/*.bib
+!report/*.tex
+!report/*.pdf
+!models
+!models/*
