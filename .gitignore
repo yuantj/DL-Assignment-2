@@ -6,4 +6,4 @@
 !report/*.tex
 !report/*.pdf
 !models
-!models/*
+!models/**
