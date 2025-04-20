@@ -5,6 +5,8 @@
 !report/*.bib
 !report/*.tex
 !report/*.pdf
+!report/*.cls
+!report/fig*
 !models
 !models/**
 !dataset
