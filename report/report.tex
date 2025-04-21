@@ -52,7 +52,7 @@ The hyperparameters for the training is as follows:
     learning_rate=1e-3,
 \end{verbatim}
 
-After training the model with 100 epochs, the training MSE is \textbf{0.4871},
+After training the model for 100 epochs, the training MSE is \textbf{0.4871},
 and the test mean Euclidean distance is \textbf{0.2455}. In addition, one of
 the scenes is randomly chosen from the test set to perform evaluation by
 visualizing the coordinates. The result is shown in Figure~\ref{fig:visual1}.
@@ -68,11 +68,12 @@ visualizing the coordinates. The result is shown in Figure~\ref{fig:visual1}.
 
 This task consists of two parts: performing hyperparameter tuning of the number
 of attention heads, and trying a deeper embedding of the node features.
-Compared with the code provided in Task 1, this parts tries different numbers
+Compared with the code provided in Task 1, these parts tried different numbers
 of heads: one of them is \texttt{num\_heads=32} (greater than the original), the
 other is \texttt{num\_heads=4} (less than the original). The result is shown in
-Table~\ref{tab:nh}, the visualization for \texttt{num\_heads=16} is shown in
-Figure~\ref{fig:visual2}. More figures can be seen in the Notebook.
+Table~\ref{tab:nh}, the visualization that uses the same scene described above
+but applies for \texttt{num\_heads=16} is shown in Figure~\ref{fig:visual2}.
+More figures can be seen in the Notebook.
 
 \begin{table}[htbp]
     \caption{Evaluation Result of Different Numbers of Heads}
@@ -105,6 +106,22 @@ Figure~\ref{fig:visual2}. More figures can be seen in the Notebook.
 \end{figure}
 
 \subsection*{Task 3}
+
+This task replaces the learned attention mechanism with an attention mechanism
+based on the Cosine similarity between node vectors. The modification is based
+on Task 2. After training the modified model with the same hyperparameters as
+those in Task 1, the training MSE becomes \textbf{0.1885}, and the test mean
+Euclidean distance becomes \textbf{0.1078}. The visualization for the scene
+that applies this graph is shown in Figure~\ref{fig:visual3}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figvisual3.png}
+    \caption{Visualization with Cosine similarity-based attention mechanism}
+    \label{fig:visual3}
+\end{figure}
+
+\section{Discussion and Conclusion}
 
 
 
