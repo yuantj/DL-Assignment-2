@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\hyphenpenalty=5000   % Prevent from hyphenation
 
 \begin{document}
 
@@ -89,7 +90,7 @@ More figures can be seen in the Notebook.
     32 & 0.8346 & 0.1375 \\
     \hline
 
-    \multicolumn{3}{l}{\textsuperscript{*}Already done in Task 1, repeated here
+    \multicolumn{3}{l}{* Already done in Task 1, repeated here
         for comparasion}
     \end{tabular}
     \label{tab:nh}
@@ -103,14 +104,29 @@ More figures can be seen in the Notebook.
     \label{fig:visual2}
 \end{figure}
 
+In addition to this task, the \texttt{GraphAttention} class is also modified
+so that it uses multi-layer perceptron (MLP) with \texttt{ReLU} activation.
+This generally improves the quality of the model. After modifying the model
+structure, the model is retrained with the same hyperparameters as used in Task
+1 (i.e. \texttt{num\_heads=8}). The training MSE becomes \textbf{0.1949}, and
+the test mean Euclidean distance is \textbf{0.1436}. The plot of the positions
+is shown in Figure~\ref{fig:visual25}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figvisual25.png}
+    \caption{Visualization with MLP including ReLU}
+    \label{fig:visual25}
+\end{figure}
+
 \subsection*{Task 3}
 
 This task replaces the learned attention mechanism with an attention mechanism
 based on the Cosine similarity between node vectors. The modification is based
-on Task 2. After training the modified model with the same hyperparameters as
-those in Task 1, the training MSE becomes \textbf{0.1885}, and the test mean
-Euclidean distance becomes \textbf{0.1078}. The visualization for the scene
-that applies this graph is shown in Figure~\ref{fig:visual3}.
+on the end of Task 2. After training the modified model with the same
+hyperparameters as those in Task 1, the training MSE becomes \textbf{0.1885},
+and the test mean Euclidean distance becomes \textbf{0.1078}. The visualization
+for the scene that applies this graph is shown in Figure~\ref{fig:visual3}.
 
 \begin{figure}[htbp]
     \centering
@@ -119,10 +135,31 @@ that applies this graph is shown in Figure~\ref{fig:visual3}.
     \label{fig:visual3}
 \end{figure}
 
+\section{Discussion and Conclusion}
+
+As shown in the results, we can find that there has many limitations on the
+naïve single-layer perception with linear activation, even when I tuned the
+number of heads. However, with the MLP with \texttt{ReLU} activation, even with
+the same hyperparameters, the performance of the model is far more better.
+
+
+
+To make our model more efficient and accurate, the learned attention mechanism
+of the model is consequently replaced with the Cosine similarity-based
+attention. This makes the model more accurate.
+
+In conclusion, 
+
 \begin{thebibliography}{00}
 \bibitem{cite:tut} A. Kensert, “Graph attention network (GAT) for node
     classification,” 2021, Keras. [Online]. Available:
     https://keras.io/examples/graph/gat\_node\_classification/
+\bibitem{cite:mlp} S. Jaiswal, “Multilayer Perceptrons in Machine Learning: A
+    Comprehensive Guide,” 2025, Datacamp. [Online]. Available:
+    https://www.datacamp.com/tutorial/multilayer-perceptrons-in-machine-learning
+\bibitem{cite:cossim} P. Miesle, “What is Cosine Similarity: A Comprehensive
+    Guide,” 2025, DataStax. [Online]. Avaliable:
+    https://www.datastax.com/guides/what-is-cosine-similarity
 \end{thebibliography}
 
 \end{document}
